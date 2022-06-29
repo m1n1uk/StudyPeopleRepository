@@ -1,6 +1,5 @@
 package kr.inplat.sample2.domain;
 
-import kr.inplat.sample2.protocol.PayResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

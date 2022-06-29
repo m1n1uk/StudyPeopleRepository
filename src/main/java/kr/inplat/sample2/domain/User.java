@@ -23,12 +23,12 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(generator="UUID")
+    @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     // 사용자 ID
     private String id;
     // 사용자 사용여부
-    @Type(type="true_false")
+    @Type(type = "true_false")
 //    @Builder.Default
     private boolean able = true;
     // 사용자 등록일

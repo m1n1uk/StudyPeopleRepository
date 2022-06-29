@@ -18,11 +18,11 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     // 이름과 날짜 값을 포함한 목록
     @Query("SELECT u FROM User u WHERE u.able = true AND u.name LIKE CONCAT('%',:name,'%') AND DATE_FORMAT(u.birthday, '%Y-%m') = :birthday ORDER BY u.createDate")
-    List<User> searchNameAndBirthday(@Param("name")String name, @Param("birthday")String birthday);
+    List<User> searchNameAndBirthday(@Param("name") String name, @Param("birthday") String birthday);
 
     // 이름 값을 포함한 목록
     @Query("SELECT u FROM User u WHERE u.able = true AND u.name LIKE CONCAT('%',:name,'%') ORDER BY u.createDate")
-    List<User> searchName(@Param("name")String name);
+    List<User> searchName(@Param("name") String name);
     // List<User> findByAbleTrueAndNameLikeOrderByCreateDate(@Param("name") String name);
 
     // 날짜 값을 포함한 목록
@@ -44,5 +44,5 @@ public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findById(String id);
 
     @Query("SELECT u FROM User u WHERE u.id = :id")
-    Optional<User> userDetail(@Param("id")String userId);
+    Optional<User> userDetail(@Param("id") String userId);
 }

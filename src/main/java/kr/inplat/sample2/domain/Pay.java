@@ -25,11 +25,11 @@ public class Pay {
     // 지불식별코드 PK
     private String id;
     // 지불사용여부
-    @Type(type="true_false")
+    @Type(type = "true_false")
     private boolean able;
     // 지출 등록일
     private Date writeTime;
-    
+
     // 지출인
     private String userId;
     // 지출일
@@ -39,7 +39,7 @@ public class Pay {
     // 총액
     private int payCost;
     // 처리여부
-    @Type(type="true_false")
+    @Type(type = "true_false")
     private boolean payState;
 
     // 내부클래스(빌더클래스) 변수 초기화 전달

@@ -2,8 +2,6 @@ package kr.inplat.sample2.protocol;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
 public class UserRequest {
 

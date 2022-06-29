@@ -14,31 +14,31 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/pay-practice")
 public class PayController {
-    
+
     // 서비스 호출
     private final PayService payService;
 
     // 지출목록
     @GetMapping("")
-    public List<PayResponse> payList(){
+    public List<PayResponse> payList() {
         return payService.payList();
     }
 
     // 지출상세
     @GetMapping("/{id}")
-    public PayResponse payDetail(@PathVariable("id")Pay pay){
+    public PayResponse payDetail(@PathVariable("id") Pay pay) {
         return payService.payDetail(pay);
     }
 
     // 지출등록
     @PostMapping("")
-    public boolean payInsert(@RequestBody PayRequest payRequest){
+    public boolean payInsert(@RequestBody PayRequest payRequest) {
         return payService.payInsert(payRequest);
     }
 
     // 지출수정
     @PutMapping("")
-    public boolean payUpdate(@RequestBody PayRequest payRequest){
+    public boolean payUpdate(@RequestBody PayRequest payRequest) {
         return payService.payUpdate(payRequest);
     }
 }

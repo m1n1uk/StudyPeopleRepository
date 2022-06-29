@@ -12,7 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +36,7 @@ public class UserService {
             return userResponse;
         }).collect(Collectors.toList());
     }
-    
+
     // 사용자 상세
     @Transactional(readOnly = true)
     public UserResponse userDetail(User user) {
@@ -44,7 +47,7 @@ public class UserService {
         // User userEntity = user.orElse(null); => user가 null일 경우, null로 대입하라.
         // BeanUtils.copyProperties(userEntity, response);  => Entity에서 받은 값을 response instance에 대입
 
-        if(repositoryUser.isPresent()){   // user != null
+        if (repositoryUser.isPresent()) {   // user != null
             // 반환할 UserResponse instance 생성 도출시킬 값들을 set
             response = UserResponse.builder()
                     .id(repositoryUser.get().getId())
@@ -74,7 +77,7 @@ public class UserService {
     @Transactional
     public Map<String, Object> postUser(UserRequest request) {
         Map<String, Object> result = new HashMap<String, Object>();
-        
+
         // db에서 name과 같은 값을 가진 정보를 가져와, 해당 정보의 이름을 변수에 담는다.
         String name = userRepository.getByName(request.getName()).get().getName();
         // 해당 이름이 받아온 요청이름과 같다면
@@ -84,7 +87,7 @@ public class UserService {
             result.put("message", "이미 등록된 사용자 입니다.");
             return result;
         }
-        
+
         // 새로운 user객체를 생성
         User user = new User();
         user.setName(request.getName());
@@ -129,7 +132,7 @@ public class UserService {
 
     // 사용자 삭제
     @Transactional
-    public boolean userDelete(String id){
+    public boolean userDelete(String id) {
         User user = User.builder()
                 .id(id)
                 .able(false)
@@ -153,30 +156,30 @@ public class UserService {
 
     // 사용자 검색
     @Transactional
-    public List<UserResponse> searchList(UserRequest user){
+    public List<UserResponse> searchList(UserRequest user) {
         // 리스트 선언
         List<User> searchList;
 
-        log.info("user -> " + user );
-        
+        log.info("user -> " + user);
+
         // 매개변수 값 비교
-        if(user.getName() != ""){ // 이름 값이 있는지
-            if(user.getBirthday() != ""){   // 날짜 값 확인
+        if (user.getName() != "") { // 이름 값이 있는지
+            if (user.getBirthday() != "") {   // 날짜 값 확인
                 log.info("(전체)유저값에 담긴 NAME : " + user.getName());
                 log.info("(전체)유저값에 담긴 BIRTHDAY : " + user.getBirthday());
                 // 두 값을 포함한 데이터 도출
                 searchList = userRepository.searchNameAndBirthday(user.getName(), user.getBirthday());
-            }else {
+            } else {
                 log.info("유저값에 담긴 NAME : " + user.getName());
                 // 이름 값 리스트 도출
                 searchList = userRepository.searchName(user.getName());
             }
-        }else{
-            if(user.getBirthday() != "") {   // 날짜 값 확인
+        } else {
+            if (user.getBirthday() != "") {   // 날짜 값 확인
                 log.info("유저값에 담긴 BIRTHDAY : " + user.getBirthday());
                 // 날짜 값 리스트 도출
                 searchList = userRepository.findByAbleTrueAndBirthdayContainingOrderByCreateDate(user.getBirthday());
-            }else{
+            } else {
                 log.info("둘 다 null일 경우");
                 searchList = userRepository.findByAbleTrue();
             }
