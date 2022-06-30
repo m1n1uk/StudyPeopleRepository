@@ -1,11 +1,17 @@
-package kr.inplat.sample2.protocol;
+package kr.inplat.sample2.dto.pay;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Data
-public class PayRequest {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class PayResponse {
 
     // 지불식별코드 PK
     private String id;

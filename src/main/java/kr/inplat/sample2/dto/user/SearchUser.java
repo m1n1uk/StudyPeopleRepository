@@ -1,4 +1,4 @@
-package kr.inplat.sample2.protocol;
+package kr.inplat.sample2.dto.user;
 
 public class SearchUser {
 

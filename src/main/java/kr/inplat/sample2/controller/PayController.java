@@ -1,8 +1,8 @@
 package kr.inplat.sample2.controller;
 
 import kr.inplat.sample2.domain.Pay;
-import kr.inplat.sample2.protocol.PayRequest;
-import kr.inplat.sample2.protocol.PayResponse;
+import kr.inplat.sample2.dto.pay.PayRequest;
+import kr.inplat.sample2.dto.pay.PayResponse;
 import kr.inplat.sample2.service.PayService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

@@ -1,9 +1,15 @@
-package kr.inplat.sample2.protocol;
+package kr.inplat.sample2.dto.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class UserRequest {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class UserResponse {
 
     // 사용자 ID
     private String id;

@@ -1,9 +1,9 @@
 package kr.inplat.sample2.service;
 
 import kr.inplat.sample2.domain.Pay;
-import kr.inplat.sample2.domain.PayRepository;
-import kr.inplat.sample2.protocol.PayRequest;
-import kr.inplat.sample2.protocol.PayResponse;
+import kr.inplat.sample2.repository.PayRepository;
+import kr.inplat.sample2.dto.pay.PayRequest;
+import kr.inplat.sample2.dto.pay.PayResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

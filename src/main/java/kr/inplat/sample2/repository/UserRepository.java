@@ -1,5 +1,6 @@
-package kr.inplat.sample2.domain;
+package kr.inplat.sample2.repository;
 
+import kr.inplat.sample2.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

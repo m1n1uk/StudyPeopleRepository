@@ -1,8 +1,8 @@
 package kr.inplat.sample2.controller;
 
 import kr.inplat.sample2.domain.User;
-import kr.inplat.sample2.protocol.UserRequest;
-import kr.inplat.sample2.protocol.UserResponse;
+import kr.inplat.sample2.dto.user.UserRequest;
+import kr.inplat.sample2.dto.user.UserResponse;
 import kr.inplat.sample2.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
