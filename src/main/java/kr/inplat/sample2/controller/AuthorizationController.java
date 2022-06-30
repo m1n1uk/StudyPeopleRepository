@@ -29,7 +29,7 @@ public class AuthorizationController {
     }
 
     @PostMapping("/{createdBy}")
-    public ResponseEntity<String> createAuthorization(@PathVariable("createdBy")String createdBy, @RequestBody AuthorizationCreateRequest authorizationCreateRequest) {
+    public ResponseEntity<String> createAuthorization(@PathVariable("createdBy") String createdBy, @RequestBody AuthorizationCreateRequest authorizationCreateRequest) {
         return ResponseEntity.ok()
                 .body(authorizationService.createAuthorization(createdBy, authorizationCreateRequest).getId());
     }
