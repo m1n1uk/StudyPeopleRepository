@@ -1,11 +1,9 @@
 package kr.inplat.sample2.controller;
 
 import kr.inplat.sample2.domain.Authorization;
-import kr.inplat.sample2.dto.authorization.AuthorizationCreateRequest;
-import kr.inplat.sample2.dto.authorization.AuthorizationUpdateRequest;
+import kr.inplat.sample2.dto.authorization.*;
 import kr.inplat.sample2.service.AuthorizationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,33 +14,40 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthorizationController {
 
-    public final AuthorizationService authorizationService;
+    private final AuthorizationService authorizationService;
 
     @GetMapping("")
-    public ResponseEntity<List<Authorization>> getAuthorizationList() {
-        return new ResponseEntity<>(authorizationService.getAuthorizationList(), HttpStatus.OK);
+    public ResponseEntity<List<AuthorizationListResponse>> getAuthorizationList(AuthorizationSearch authorizationSearch){
+        return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Authorization> getAuthorization(@PathVariable("id") Authorization authorization) {
-        return new ResponseEntity<>(authorizationService.getAuthorization(authorization), HttpStatus.OK);
+    public ResponseEntity<AuthorizationResponse> getAuthorization(@PathVariable("id")Authorization authorization){
+        return null;
     }
 
-    @PostMapping("/{createdBy}")
-    public ResponseEntity<String> createAuthorization(@PathVariable("createdBy") String createdBy, @RequestBody AuthorizationCreateRequest authorizationCreateRequest) {
-        return ResponseEntity.ok()
-                .body(authorizationService.createAuthorization(createdBy, authorizationCreateRequest).getId());
+    @PostMapping("")
+    public ResponseEntity<String> createAuthorization(@RequestBody AuthorizationCreateRequest authorizationCreateRequest){
+        return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateAuthorization(@PathVariable("id") String id, @RequestBody AuthorizationUpdateRequest authorizationUpdateRequest) {
-        return ResponseEntity.ok()
-                .body(authorizationService.updateAuthorization(id, authorizationUpdateRequest).getId());
+    public ResponseEntity<String> updateAuthorization(@PathVariable("id")String id, AuthorizationUpdateRequest authorizationUpdateRequest){
+        return null;
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAuthorization(@PathVariable("id") String id) {
-        return ResponseEntity.ok()
-                .body(authorizationService.deleteAuthorization(id).getId());
+    public ResponseEntity<String> deleteAuthorization(@PathVariable("id")String id){
+        return null;
+    }
+    // enum타입 목록도출
+//    @GetMapping("/document-type")
+//    public ResponseEntity<List<DocumentType>> getDocumentType(){
+//    }
+
+    // 승인
+    @PostMapping("/confirm")
+    public ResponseEntity<String> confirmAuthorization(@RequestBody AuthorizationUpdateRequest authorizationUpdateRequest){
+        return null;
     }
 }

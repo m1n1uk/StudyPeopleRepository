@@ -1,8 +1,7 @@
 package kr.inplat.sample2.service;
 
 import kr.inplat.sample2.domain.Authorization;
-import kr.inplat.sample2.dto.authorization.AuthorizationCreateRequest;
-import kr.inplat.sample2.dto.authorization.AuthorizationUpdateRequest;
+import kr.inplat.sample2.dto.authorization.*;
 import kr.inplat.sample2.repository.AuthorizationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,40 +12,36 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AuthorizationService {
-    public final AuthorizationRepository authorizationRepository;
+
+    private final AuthorizationRepository authorizationRepository;
 
     @Transactional(readOnly = true)
-    public List<Authorization> getAuthorizationList() {
-        return authorizationRepository.findByDeletedFalse();
+    public List<AuthorizationListResponse> getAuthorizationList(AuthorizationSearch authorizationSearch){
+        return null;
     }
 
     @Transactional(readOnly = true)
-    public Authorization getAuthorization(Authorization authorization) {
-        return authorization;
+    public AuthorizationResponse getAuthorization(Authorization authorization){
+        return null;
     }
 
     @Transactional
-    public Authorization createAuthorization(String createdBy, AuthorizationCreateRequest authorizationCreateRequest) {
-        Authorization createAuthorization = new Authorization(authorizationCreateRequest);
-        createAuthorization.createdBy(createdBy);
-        return authorizationRepository.save(createAuthorization);
+    public Authorization createAuthorization(AuthorizationCreateRequest authorizationCreateRequest){
+        return null;
     }
 
     @Transactional
-    public Authorization updateAuthorization(String id, AuthorizationUpdateRequest authorizationUpdateRequest) {
-        Authorization authorizationUpdate = authorizationRepository.getReferenceById(id);
-        authorizationUpdate.update(
-                authorizationUpdateRequest.getModifiedBy(),
-                authorizationUpdateRequest.getDocumentCode(),
-                authorizationUpdateRequest.getDocumentTitle()
-        );
-        return authorizationUpdate;
+    public Authorization updateAuthorization(String id, AuthorizationUpdateRequest authorizationUpdateRequest){
+        return null;
     }
 
     @Transactional
-    public Authorization deleteAuthorization(String id) {
-        Authorization authorization = authorizationRepository.getReferenceById(id);
-        authorization.delete();
-        return authorization;
+    public Authorization deleteAuthorization(String id){
+        return null;
+    }
+
+    @Transactional
+    public Authorization confirmAuthorization(AuthorizationUpdateRequest authorizationUpdateRequest){
+        return null;
     }
 }

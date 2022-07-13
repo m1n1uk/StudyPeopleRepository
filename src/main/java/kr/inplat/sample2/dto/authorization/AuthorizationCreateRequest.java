@@ -1,8 +1,8 @@
 package kr.inplat.sample2.dto.authorization;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class AuthorizationCreateRequest {
 
     private int documentCode;
@@ -10,4 +10,6 @@ public class AuthorizationCreateRequest {
     private String documentTitle;
 
     private String confirmId;
+
+    private String createdBy;
 }

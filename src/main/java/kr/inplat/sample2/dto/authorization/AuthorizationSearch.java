@@ -3,13 +3,11 @@ package kr.inplat.sample2.dto.authorization;
 import lombok.Data;
 
 @Data
-public class AuthorizationUpdateRequest {
+public class AuthorizationSearch {
 
     private int documentCode;
 
     private String documentTitle;
 
-    private String confirmId;
-
-    private String modifiedBy;
+    private String confirm;
 }
